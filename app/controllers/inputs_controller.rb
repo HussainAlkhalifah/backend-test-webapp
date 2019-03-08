@@ -36,13 +36,18 @@ class InputsController < ApplicationController
 
 
 	end
-	 def input_params
+
+	def input_params
 		params.require(:input).permit(:name, :email, :phone)
 		
 	end
 	def insert_elements(input)
 		@input = input
 		@input.save
+
+		
+	end
+	def notify(msg)
 
 		
 	end
