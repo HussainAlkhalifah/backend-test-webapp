@@ -8,7 +8,7 @@ class InputsController < ApplicationController
 
 	end
 	def show
-		@input = Input.find(params[:id])
+		#@input = Input.find(params[:id])
 		
 	end
 
@@ -23,7 +23,7 @@ class InputsController < ApplicationController
 		#@input = Input.new(input_params)
 		#@input.save
 		# que = Queue.new
-		GuestsCleanupJob.set(wait: 10.seconds).perform_later(tempName, tempEmail, tempPhone)
+		GuestsCleanupJob.set(wait: 1.minutes).perform_later(tempName, tempEmail, tempPhone)
 		@tempName = params[:input][:name] 
 		@tempEmail = params[:input][:email] 
 		@tempPhone = params[:input][:phone] 
@@ -31,10 +31,6 @@ class InputsController < ApplicationController
 		#@input_s = 1
 		#redirect_to @input
 		redirect_to action: "show", id: 5
-
-
-
-
 	end
 
 	def input_params
